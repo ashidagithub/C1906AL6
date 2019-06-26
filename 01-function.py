@@ -33,4 +33,18 @@ h = 5
 print("width =", w, " height =", h, " area =", area(w, h))
 
 
-# 练习四：返回值
+# 练习四：将求三角形面积的海伦公式函数化
+def triangle_area(a, b, c):
+    # 依据海伦公式求任意三角形面积
+    # 已知三角形三边a,b,c,半周长p,则S＝ √[p(p - a)(p - b)(p - c)] （海伦公式）（p=(a+b+c)/2）
+    # 计算半周长
+    p = (a + b + c) / 2
+
+    # 计算面积
+    # 掌握 python 开根号的写法
+    area = (p * (p - a) * (p - b) * (p - c)) ** 0.5
+    return area
+
+# 调用
+s = triangle_area(3,4,5)
+print(s)
