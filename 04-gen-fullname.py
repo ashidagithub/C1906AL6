@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-# Filename : 03-function-scopy.py
+# Filename : 04-gen-fullname.py
 # author by : （学员ID)
 
 # 目的:
