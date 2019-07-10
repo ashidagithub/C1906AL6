@@ -46,12 +46,13 @@ for cn in cardNumbers:
         card = cm + cn
         deck.append(card)
 
+print('\n-----------cutting line(1)---------------')
 print('--debug: Create my deck, total cards is %d, detail is : \n%s : '
      % (len(deck), deck))
 
-# write my new deck into a file1
+# write my new deck into a file
 #f = open('new-deck.txt','w')
-f = codecs.open("new-deck.txt","w","utf-8")
+f = codecs.open("deck-new-54.txt","w","utf-8")
 for card in deck:
     f.write(card)
     f.write('\t')
@@ -61,7 +62,7 @@ f.close
 # --------------------------------------------------------
 # optional - make a deck for DouDiZhu
 # method 1:
-'''
+
 for pos in range(5):
     del deck[0]
 
@@ -70,13 +71,13 @@ del deck[-1]
 # methon 2:
 del deck[0:5]
 del deck[-1]
-
+'''
 print('--debug: Create my deck for DDZ, total cards is %d, detail is : \n%s : '
      % (len(deck), deck))
 
-# write my new deck into a file1
+# write my new DDZ deck into a file1
 #f = open('new-deck.txt','w')
-f = codecs.open("new-deck-DDZ.txt","w","utf-8")
+f = codecs.open("deck-DDZ-48.txt","w","utf-8")
 for card in deck:
     f.write(card)
     f.write('\t')
@@ -90,3 +91,19 @@ count = len(deck)
 
 for i in range(count):
     pickedCard = random.choice(deck)
+    shuffledDeck.append(pickedCard)
+    deck.remove(pickedCard)
+
+print('\n-----------cutting line(2)---------------')
+print('--debug: Shuffled my deck , remained cards is %d, detail is : \n%s : '
+     % (len(deck), deck))
+print('--debug: Shuffled my deck , new deck cards is %d, detail is : \n%s : '
+     % (len(shuffledDeck), shuffledDeck))
+
+# write my new deck into a file
+#f = open('new-deck.txt','w')
+f = codecs.open("deck-shuffled.txt","w","utf-8")
+for card in shuffledDeck:
+    f.write(card)
+    f.write('\t')
+f.close
