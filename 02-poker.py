@@ -11,6 +11,7 @@
 # import some external moduls
 import random
 import codecs
+import copy
 
 # ------------------------(max to 80 columns)-----------------------------------
 # main program start here
@@ -58,7 +59,7 @@ for card in deck:
     f.write('\t')
 f.close
 
-
+'''
 # --------------------------------------------------------
 # optional - make a deck for DouDiZhu
 # method 1:
@@ -67,11 +68,11 @@ for pos in range(5):
     del deck[0]
 
 del deck[-1]
-'''
+
 # methon 2:
 del deck[0:5]
 del deck[-1]
-'''
+
 print('--debug: Create my deck for DDZ, total cards is %d, detail is : \n%s : '
      % (len(deck), deck))
 
@@ -82,17 +83,23 @@ for card in deck:
     f.write(card)
     f.write('\t')
 f.close
+'''
 
 # --------------------------------------------------------
 # Phase 2:  shuffle
 # --------------------------------------------------------
+# methon 1:
+'''
 shuffledDeck = []
 count = len(deck)
-
 for i in range(count):
     pickedCard = random.choice(deck)
     shuffledDeck.append(pickedCard)
     deck.remove(pickedCard)
+'''
+# methon 2:
+shuffledDeck = copy.copy(deck)
+random.shuffle(shuffledDeck)
 
 print('\n-----------cutting line(2)---------------')
 print('--debug: Shuffled my deck , remained cards is %d, detail is : \n%s : '
