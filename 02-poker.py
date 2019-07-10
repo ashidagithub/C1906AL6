@@ -24,7 +24,7 @@ import copy
 # red joker-大王 black joker-小王
 #cardJokers = ('Red Joker','Black Joker')
 #cardJokers = ('RJ','BJ')
-cardJokers = ('♚','♛')
+cardJokers = ('♞','♘')
 
 # heart-红桃 spade-黑桃 club-梅花 diamond-方块
 #cardMarks = ('Heart','Spade','Club','Diamond')
@@ -114,3 +114,51 @@ for card in shuffledDeck:
     f.write(card)
     f.write('\t')
 f.close
+
+
+# --------------------------------------------------------
+# Phase 3:  deal
+# --------------------------------------------------------
+print('\n-----------cutting line(3)---------------')
+numOfPlayers = 3
+cardsOfPlayer = int(len(shuffledDeck)/3)
+print('--debug: %d players, every one has %d cards.'
+    % (numOfPlayers, cardsOfPlayer))
+
+# methon 1: one by one
+player1Cards = []
+for i in range(cardsOfPlayer):
+    pickedCard = random.choice(shuffledDeck)
+    player1Cards.append(pickedCard)
+    shuffledDeck.remove(pickedCard)
+print('\n--debug: Player1''s %d cards is --  %s: '
+    % (len(player1Cards), player1Cards))
+print('--debug: Remained %d cards in shuffled deck is %s: '
+    % (len(shuffledDeck), shuffledDeck))
+
+player2Cards = []
+for i in range(cardsOfPlayer):
+    pickedCard = random.choice(shuffledDeck)
+    player2Cards.append(pickedCard)
+    shuffledDeck.remove(pickedCard)
+print('\n--debug: Player2''s %d cards is --  %s: '
+    % (len(player2Cards), player2Cards))
+print('--debug: Remained %d cards in shuffled deck is %s: '
+    % (len(shuffledDeck), shuffledDeck))
+
+player3Cards = []
+for card in shuffledDeck:
+    player3Cards.append(card)
+shuffledDeck = []
+print('\n--debug: Player3''s %d cards is --  %s: '
+    % (len(player3Cards), player3Cards))
+print('--debug: Remained %d cards in shuffled deck is %s: '
+    % (len(shuffledDeck), shuffledDeck))
+
+
+# methon 2:
+#player1 = [numOfPlayers][cardsOfPlayer]
+dealedCards = [['' for j in range(cardsOfPlayer)] for i in range(numOfPlayers)]
+#print(dealedCards)
+#dealedCards[0][0] = shuffledDeck[0]
+#print (dealedCards)
