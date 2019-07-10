@@ -24,7 +24,7 @@ import copy
 # red joker-大王 black joker-小王
 #cardJokers = ('Red Joker','Black Joker')
 #cardJokers = ('RJ','BJ')
-cardJokers = ('♞','♘')
+cardJokers = ('♞', '♘')
 
 # heart-红桃 spade-黑桃 club-梅花 diamond-方块
 #cardMarks = ('Heart','Spade','Club','Diamond')
@@ -33,7 +33,8 @@ cardMarks = ('♠', '♥', '♣', '♦')
 
 # 2,3,4,5,6,7,8,9,10,J,Q,K,A
 #cardNumbers = ('2','3','4','5','6','7','8','9','10','Jack','Queen','King','Ace')
-cardNumbers = ('2','3','4','5','6','7','8','9','10','J','Q','K','A')
+cardNumbers = ('2', '3', '4', '5', '6', '7', '8',
+               '9', '10', 'J', 'Q', 'K', 'A')
 
 # make a deck of playing card
 # add jokers first
@@ -41,7 +42,7 @@ deck = []
 for c in cardJokers:
     deck.append(c)
 
-# add 4x13 card
+# add 4x13 cards
 for cn in cardNumbers:
     for cm in cardMarks:
         card = cm + cn
@@ -49,11 +50,11 @@ for cn in cardNumbers:
 
 print('\n-----------cutting line(1)---------------')
 print('--debug: Create my deck, total cards is %d, detail is : \n%s : '
-     % (len(deck), deck))
+      % (len(deck), deck))
 
 # write my new deck into a file
 #f = open('new-deck.txt','w')
-f = codecs.open("deck-new-54.txt","w","utf-8")
+f = codecs.open("deck-new-54.txt", "w", "utf-8")
 for card in deck:
     f.write(card)
     f.write('\t')
@@ -97,33 +98,32 @@ for i in range(count):
     shuffledDeck.append(pickedCard)
     deck.remove(pickedCard)
 '''
-# methon 2:
+# method 2:
 shuffledDeck = copy.copy(deck)
 random.shuffle(shuffledDeck)
 
 print('\n-----------cutting line(2)---------------')
 print('--debug: Shuffled my deck , remained cards is %d, detail is : \n%s : '
-     % (len(deck), deck))
+      % (len(deck), deck))
 print('--debug: Shuffled my deck , new deck cards is %d, detail is : \n%s : '
-     % (len(shuffledDeck), shuffledDeck))
+      % (len(shuffledDeck), shuffledDeck))
 
 # write my new deck into a file
 #f = open('new-deck.txt','w')
-f = codecs.open("deck-shuffled.txt","w","utf-8")
+f = codecs.open("deck-shuffled.txt", "w", "utf-8")
 for card in shuffledDeck:
     f.write(card)
     f.write('\t')
 f.close
-
 
 # --------------------------------------------------------
 # Phase 3:  deal
 # --------------------------------------------------------
 print('\n-----------cutting line(3)---------------')
 numOfPlayers = 3
-cardsOfPlayer = int(len(shuffledDeck)/3)
+cardsOfPlayer = int(len(shuffledDeck) / numOfPlayers)
 print('--debug: %d players, every one has %d cards.'
-    % (numOfPlayers, cardsOfPlayer))
+      % (numOfPlayers, cardsOfPlayer))
 
 # methon 1: one by one
 player1Cards = []
@@ -132,9 +132,9 @@ for i in range(cardsOfPlayer):
     player1Cards.append(pickedCard)
     shuffledDeck.remove(pickedCard)
 print('\n--debug: Player1''s %d cards is --  %s: '
-    % (len(player1Cards), player1Cards))
+      % (len(player1Cards), player1Cards))
 print('--debug: Remained %d cards in shuffled deck is %s: '
-    % (len(shuffledDeck), shuffledDeck))
+      % (len(shuffledDeck), shuffledDeck))
 
 player2Cards = []
 for i in range(cardsOfPlayer):
@@ -142,23 +142,15 @@ for i in range(cardsOfPlayer):
     player2Cards.append(pickedCard)
     shuffledDeck.remove(pickedCard)
 print('\n--debug: Player2''s %d cards is --  %s: '
-    % (len(player2Cards), player2Cards))
+      % (len(player2Cards), player2Cards))
 print('--debug: Remained %d cards in shuffled deck is %s: '
-    % (len(shuffledDeck), shuffledDeck))
+      % (len(shuffledDeck), shuffledDeck))
 
 player3Cards = []
 for card in shuffledDeck:
     player3Cards.append(card)
 shuffledDeck = []
 print('\n--debug: Player3''s %d cards is --  %s: '
-    % (len(player3Cards), player3Cards))
+      % (len(player3Cards), player3Cards))
 print('--debug: Remained %d cards in shuffled deck is %s: '
-    % (len(shuffledDeck), shuffledDeck))
-
-
-# methon 2:
-#player1 = [numOfPlayers][cardsOfPlayer]
-dealedCards = [['' for j in range(cardsOfPlayer)] for i in range(numOfPlayers)]
-#print(dealedCards)
-#dealedCards[0][0] = shuffledDeck[0]
-#print (dealedCards)
+      % (len(shuffledDeck), shuffledDeck))
